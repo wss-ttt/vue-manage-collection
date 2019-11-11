@@ -43,7 +43,13 @@
 
       <el-table-column align="center" label="Actions" width="120">
         <template slot-scope="scope">
-          <router-link :to="'/example/edit/'+scope.row.id">
+          <!-- <router-link :to="'/example/edit/'+scope.row.id">
+            <el-button type="primary" size="small" icon="el-icon-edit">
+              Edit
+            </el-button>
+          </router-link> -->
+          <!-- 第二种方法:通过params进行传递参数 -->
+          <router-link :to="{name:'EditArticle',params:{id:scope.row.id}}">
             <el-button type="primary" size="small" icon="el-icon-edit">
               Edit
             </el-button>
