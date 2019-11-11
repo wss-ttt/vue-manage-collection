@@ -7,6 +7,8 @@
         <keep-alive>
           <tab-pane v-if="activeName==item.key" :type="item.key" @create="showCreatedTimes" />
         </keep-alive>
+        <!-- 比较使用keep-alive和不适用keepa-alive的区别 -->
+        <!-- <tab-pane v-if="activeName==item.key" :type="item.key" @create="showCreatedTimes" /> -->
       </el-tab-pane>
     </el-tabs>
   </div>
