@@ -79,10 +79,14 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
+        // tHeader是用于设置excel中列标题显示的
+        // const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
+        const tHeader = ['编号', '标题', '作者', '阅读中', '时间']
         const filterVal = ['id', 'title', 'author', 'pageviews', 'display_time']
         const list = this.list
+        console.log('list',list)
         const data = this.formatJson(filterVal, list)
+        console.log('data',data)
         excel.export_json_to_excel({
           header: tHeader,
           data,
