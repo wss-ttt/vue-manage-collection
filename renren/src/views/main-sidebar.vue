@@ -10,6 +10,14 @@
           <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
           <span slot="title">首页</span>
         </el-menu-item>
+        <el-menu-item index="echart-index" @click="$router.push({ name: 'echart-index' })">
+          <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
+          <span slot="title">echarts-index</span>
+        </el-menu-item>
+        <el-menu-item index="echart-index2" @click="$router.push({ name: 'echart-index2' })">
+          <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
+          <span slot="title">echarts-index2</span>
+        </el-menu-item>
         <el-submenu index="demo">
           <template slot="title">
             <icon-svg name="shoucang" class="site-sidebar__menu-icon"></icon-svg>
