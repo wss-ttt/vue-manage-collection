@@ -18,6 +18,14 @@
           <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
           <span slot="title">echarts-index2</span>
         </el-menu-item>
+        <el-menu-item index="test-index" @click="$router.push({ name: 'test-index' })">
+          <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
+          <span slot="title">test-index</span>
+        </el-menu-item>
+        <el-menu-item index="test-index2" @click="$router.push({ name: 'test-index2' })">
+          <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
+          <span slot="title">test-index2</span>
+        </el-menu-item>
         <el-submenu index="demo">
           <template slot="title">
             <icon-svg name="shoucang" class="site-sidebar__menu-icon"></icon-svg>

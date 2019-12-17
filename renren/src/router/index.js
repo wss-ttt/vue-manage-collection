@@ -41,14 +41,27 @@ const mainRoutes = {
       path:'/echarts-study/index',
       name:'echart-index',
       component:_import('echarts-study/index'),
-      meta:{title:'index',isTab:true}
+      meta:{title:'echart-index',isTab:true}
     },
     {
       path:'/echarts-study/index2',
       name:'echart-index2',
       component:_import('echarts-study/index2'),
-      meta:{title:'index2',isTab:true}
-    }
+      meta:{title:'echart-index2',isTab:true}
+    },
+    // test文件夹
+    {
+      path:'/test/index',
+      name:'test-index',
+      component:_import('test/index'),
+      meta:{title:'test-index',isTab:true}
+    },
+    {
+      path:'/test/index2',
+      name:'test-index2',
+      component:_import('test/index2'),
+      meta:{title:'test-index2',isTab:true}
+    },
   ],
   beforeEnter (to, from, next) {
     let token = Vue.cookie.get('token')
