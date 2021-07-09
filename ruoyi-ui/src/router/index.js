@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import ParentView from '@/components/ParentView';
 
 /**
  * Note: 路由配置项
@@ -76,6 +77,32 @@ export const constantRoutes = [
         component: (resolve) => require(['@/views/system/user/profile/index'], resolve),
         name: 'Profile',
         meta: { title: '个人中心', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'role/:userId(\\d+)',
+        component: (resolve) => require(['@/views/system/user/authRole'], resolve),
+        name: 'AuthRole',
+        meta: { title: '分配角色'}
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'user/:roleId(\\d+)',
+        component: (resolve) => require(['@/views/system/role/authUser'], resolve),
+        name: 'AuthUser',
+        meta: { title: '分配用户'}
       }
     ]
   },

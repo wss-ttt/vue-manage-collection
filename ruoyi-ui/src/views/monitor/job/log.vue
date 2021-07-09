@@ -56,7 +56,7 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
@@ -65,6 +65,7 @@
       <el-col :span="1.5">
         <el-button
           type="danger"
+          plain
           icon="el-icon-delete"
           size="mini"
           :disabled="multiple"
@@ -75,6 +76,7 @@
       <el-col :span="1.5">
         <el-button
           type="danger"
+          plain
           icon="el-icon-delete"
           size="mini"
           @click="handleClean"
@@ -84,8 +86,10 @@
       <el-col :span="1.5">
         <el-button
           type="warning"
+          plain
           icon="el-icon-download"
           size="mini"
+          :loading="exportLoading"
           @click="handleExport"
           v-hasPermi="['monitor:job:export']"
         >导出</el-button>
@@ -172,6 +176,8 @@ export default {
     return {
       // 遮罩层
       loading: true,
+      // 导出遮罩层
+      exportLoading: false,
       // 选中数组
       ids: [],
       // 非多个禁用
@@ -263,7 +269,7 @@ export default {
         }).then(() => {
           this.getList();
           this.msgSuccess("删除成功");
-        })
+        }).catch(() => {});
     },
     /** 清空按钮操作 */
     handleClean() {
@@ -276,7 +282,7 @@ export default {
         }).then(() => {
           this.getList();
           this.msgSuccess("清空成功");
-        })
+        }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -285,11 +291,13 @@ export default {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
-        }).then(function() {
+        }).then(() => {
+          this.exportLoading = true;
           return exportJobLog(queryParams);
         }).then(response => {
           this.download(response.msg);
-        })
+          this.exportLoading = false;
+        }).catch(() => {});
     }
   }
 };
